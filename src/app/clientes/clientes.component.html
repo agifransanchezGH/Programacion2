@@ -1,0 +1,17 @@
+
+      <h1>Clientes</h1>
+<div align="center">
+      <table border="1" style="background-color: rgb(236, 250, 217);">
+        <tr >
+        <th>Nombre</th><th>Apellido</th><th>Saldo</th><th>Status</th>
+        </tr>
+        <tr *ngFor="let cli of clients;let i=index">
+          <td >{{cli.Apellido}}</td>
+          <td>{{cli.Nombre}}</td>
+          <td>{{cli.Saldo}}</td>
+          <td *ngIf="cli.Status>0" style ="text-align:center;color:yellow;background-color:green">✓</td>
+        </tr>
+        
+      </table>
+    </div>
+

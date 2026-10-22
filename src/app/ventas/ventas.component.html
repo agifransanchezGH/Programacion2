@@ -1,0 +1,16 @@
+
+<h1>Ventas</h1>
+<div align="center">
+<table border="1" style="background-color: rgb(228, 245, 248)">
+  <tr>
+    <td style='border-style: none;'></td>
+    <th *ngFor= "let ss of sucursales;let s= index"> {{ss.Nombre_Suc}}</th>
+   <tr *ngFor="let VM of sales;let i=index">
+    <th>{{meses[i].Mes.substring(0,3)}}</th>
+  
+    <td align= "right" *ngFor="let s of sales[i];let j=index">{{s|number:'1.2-2'}}</td>
+    
+  </tr>
+  
+</table>
+</div>

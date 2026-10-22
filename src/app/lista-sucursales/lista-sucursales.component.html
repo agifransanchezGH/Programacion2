@@ -1,0 +1,16 @@
+
+      <h1>Sucursales</h1>
+      <div align="center">
+      <table border="1" style="background-color: rgb(245, 198, 229)">
+        <tr>
+          <th>Id</th><th>Nombre</th><th>Dirección</th><th>C. Empl</th>
+        </tr>
+        <tr *ngFor="let suc of sucursales;let i=index">
+          <td>{{suc.Id_Suc}}</td>
+          <td>{{suc.Nombre_Suc}}</td>
+          <td>{{suc.Dir_Suc}}</td>
+          <td align="right">{{suc.Cant_Emp_Suc}}</td>      
+        </tr>
+        
+      </table>
+</div>
