@@ -1,92 +1,21 @@
+<header class="site-header">
+  <h1>ByteTech</h1>
 
+  <nav aria-label="Navegación principal">
+    <a
+      routerLink="/inicio"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      ariaCurrentWhenActive="page"
+    >Inicio</a>
+    <a routerLink="/sucursales" routerLinkActive="active" ariaCurrentWhenActive="page">Nuestras sucursales</a>
+    <a routerLink="/clientes" routerLinkActive="active" ariaCurrentWhenActive="page">Clientes</a>
+    <a routerLink="/catalogo" routerLinkActive="active" ariaCurrentWhenActive="page">Catálogo</a>
+    <a routerLink="/facturas" routerLinkActive="active" ariaCurrentWhenActive="page">Facturas</a>
+    <a routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page">Iniciar Sesión</a>
+  </nav>
+</header>
 
-    <h1>La Casa del Parafuso</h1>
-<p>
-<hr>
-<nav>
-
-  <a routerLink="/inicio">Inicio</a>
-<a routerLink="/sucursales">Nuestras Sucursales</a>
-<a routerLink="/clientes">Ver Clientes</a>
-<a routerLink="/Ventas">Ver Ventas</a>
-</nav>
-<hr>
-<router-outlet></router-outlet>
-<hr>
-
-<!--
-    <app-clientes></app-clientes>
-    <hr>
-
-
-    <table >
-      <tr>
-        <td style="vertical-align: text-top;background-color: azure;">
-    <h1>Meses</h1>
-       <table border="1" style="background-color: rgb(238, 236, 136)">
-        <tr>
-          <td>Nro</td><td>Mes</td><td>C. Días</td>
-        </tr>
-       
-        <tr *ngFor="let m of meses;let i = index">
-          <td>{{m.Nro}} </td>
-          <td>{{m.Mes}}</td>
-          <td>{{m.CDias}}</td>
-        </tr>
-      </table>
-    </td>
- 
-    <td style="vertical-align: text-top;background-color: azure;">
-      <h1>Sucursales</h1>
-
-      <table border="1" style="background-color: rgb(245, 198, 229)">
-        <tr>
-          <td>Id</td><td>Nombre</td><td>Dirección</td><td>C. Empl</td>
-        </tr>
-        <tr *ngFor="let suc of sucursales;let i=index">
-          <td>{{suc.Id_Suc}}</td>
-          <td>{{suc.Nombre_Suc}}</td>
-          <td>{{suc.Dir_Suc}}</td>
-          <td>{{suc.Cant_Emp_Suc}}</td>      
-        </tr>
-        
-      </table>
-    </td>
-    <td style="vertical-align: text-top;background-color: azure;">
-
-      <h1>Clientes</h1>
-
-      <table border="1" style="background-color: rgb(236, 250, 217);">
-        <tr>
-        <td>Nombre</td><td>Apellido</td><td>Saldo</td><td>Status</td>
-        </tr>
-        <tr *ngFor="let cli of clientes;let i=index">
-          <td>{{cli.Apellido}}</td>
-          <td>{{cli.Nombre}}</td>
-          <td>{{cli.Saldo}}</td>
-          <td *ngIf="cli.Status>0" style ="text-align:center;color:yellow;background-color:green">✓</td>
-        </tr>
-        
-      </table>
-
-    </td>
-<td style="vertical-align: text-top; background-color: azure;">
-   <h1>Ventas</h1>
-   
-      <table border="1" style="background-color: rgb(228, 245, 248)">
-        <tr>
-          <td></td>
-          <td *ngFor= "let ss of sucursales;let s= index"> {{ss.Nombre_Suc}}</td>
-         <tr *ngFor="let VM of sales;let i=index">
-          <td>{{meses[i].Mes.substring(0,3)}}</td>
-        
-          <td *ngFor="let s of sales[i];let j=index">{{s}}</td>
-          
-        </tr>
-        
-      </table>
-      
-    </td>
-  </tr>
-  </table>
--->
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main>

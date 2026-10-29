@@ -1,0 +1,119 @@
+<section aria-labelledby="facturas-title">
+  <h2 id="facturas-title">Facturas</h2>
+
+  <div class="filters">
+    <label>
+      Sucursal
+      <select [value]="filters.sucursalId ?? ''" (change)="seleccionarSucursal($event)" [disabled]="loadingOptions">
+        <option value="">Todas</option>
+        <option *ngFor="let sucursal of sucursales" [value]="sucursal.ID_sucursal">
+          {{ sucursal.nombre }}
+        </option>
+      </select>
+    </label>
+
+    <label>
+      Cliente
+      <select [value]="filters.clienteId ?? ''" (change)="seleccionarCliente($event)" [disabled]="loadingOptions">
+        <option value="">Todos</option>
+        <option *ngFor="let cliente of clientes" [value]="cliente.ID_cliente">
+          {{ cliente.nombre }} {{ cliente.apellido }}
+        </option>
+      </select>
+    </label>
+
+    <label>
+      Mes
+      <input type="month" [value]="filters.month" (change)="seleccionarMes($event)">
+    </label>
+
+    <label>
+      Estado
+      <select [value]="filters.status" (change)="seleccionarEstado($event)">
+        <option value="">Todos</option>
+        <option value="Pagada">Pagada</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="Atrasada">Atrasada</option>
+      </select>
+    </label>
+
+    <label>
+      Por página
+      <select [value]="pageSize" (change)="seleccionarPageSize($event)">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+    </label>
+
+    <div class="filter-actions">
+      <button type="button" (click)="aplicarFiltros()" [disabled]="loading || loadingOptions">Filtrar</button>
+      <button class="secondary-button" (click)="limpiarFiltros()" [disabled]="loading">
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <p *ngIf="optionsErrorMessage" class="status-message error-message" role="alert">
+    {{ optionsErrorMessage }}
+  </p>
+  <p class="record-count" aria-live="polite">
+    Mostrando {{ firstRecord }}–{{ lastRecord }} de {{ total }} facturas
+  </p>
+
+  <p *ngIf="loading" class="status-message" role="status">Cargando facturas...</p>
+  <p *ngIf="errorMessage" class="status-message error-message" role="alert">{{ errorMessage }}</p>
+
+  <div class="table-container" *ngIf="!loading && !errorMessage">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th scope="col">ID factura</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Sucursal</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Importe</th>
+          <th scope="col">IVA</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas">
+          <td>{{ factura.ID_factura }}</td>
+          <td>{{ factura.fecha }}</td>
+          <td>{{ factura.sucursal_id }}</td>
+          <td>{{ factura.cliente_id }}</td>
+          <td class="numeric-cell">{{ factura.importe }}</td>
+          <td class="numeric-cell">{{ factura.iva }}</td>
+          <td>{{ factura.estado }}</td>
+        </tr>
+        <tr *ngIf="facturas.length === 0">
+          <td colspan="7" class="empty-message">No hay facturas para mostrar.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <nav class="pagination" aria-label="Paginación de facturas">
+    <button type="button" (click)="cambiarPagina(currentPage - 1)" [disabled]="currentPage <= 1 || loading">
+      Anterior
+    </button>
+    <div class="page-jump">
+      <label for="target-page">Página</label>
+      <input
+        id="target-page"
+        type="number"
+        [value]="targetPage"
+        (input)="actualizarPagina($event)"
+        min="1"
+        [max]="totalPages"
+        [disabled]="loading || totalPages === 0"
+      >
+      <span>de {{ totalPages || 1 }}</span>
+      <button type="button" (click)="irAPagina()" [disabled]="loading || totalPages === 0">Ir</button>
+    </div>
+    <button type="button" (click)="cambiarPagina(currentPage + 1)" [disabled]="currentPage >= totalPages || loading">
+      Siguiente
+    </button>
+  </nav>
+</section>

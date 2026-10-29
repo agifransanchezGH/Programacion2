@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { ArticulosService } from '../articulos.service';
 
 @Component({
@@ -12,15 +12,27 @@ import { ArticulosService } from '../articulos.service';
 export class ListaSucursalesComponent implements OnInit {
 sucursales:any=[];
 
-  constructor(private sucServ:ArticulosService) { }
+  constructor(
+    private sucServ:ArticulosService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
   this.recuperarSucus();
   }
-  recuperarSucus(){
-    this.sucServ.recuperarSucus().subscribe(ss => {this.sucursales = (ss);
-  //alert (JSON.stringify(this.sucursales));
-  });
-}
+ recuperarSucus(): void {
+    this.sucServ.recuperarSucus().subscribe({
+      next: (ss) => {
+        console.log('Respuesta del servidor:', ss);
 
+        this.sucursales = ss;
+
+        // Fuerza la actualización de la vista
+        this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error recuperando sucursales:', error);
+      }
+    });
+  }
 }

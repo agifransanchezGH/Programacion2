@@ -1,1 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #f4f6f8;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f4f6f8;
+  color: #202b36;
+  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e4e8ec;
+  border-radius: 0.3rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(23 43 58 / 5%);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #293540;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.data-table thead {
+  background: #30373d;
+  color: #fff;
+}
+
+.data-table th,
+.data-table td {
+  min-width: 7rem;
+  padding: 1rem 1.15rem;
+}
+
+.data-table thead th {
+  border-bottom: 1px solid #252b30;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.data-table tbody tr + tr {
+  border-top: 0.45rem solid #f5f7f9;
+}
+
+.data-table tbody th,
+.data-table tbody td {
+  background: #fff;
+  font-weight: 400;
+}
+
+.data-table tbody th {
+  font-weight: 600;
+}
+
+.data-table tbody tr:hover th,
+.data-table tbody tr:hover td {
+  background: #f8fafb;
+}
+
+.data-table .numeric-cell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+  .data-table th,
+  .data-table td {
+    padding: 0.85rem 0.9rem;
+  }
+}

@@ -1,35 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import {CommonModule} from '@angular/common'
+import { CommonModule } from '@angular/common'
 
 import { ArticulosService } from '../articulos.service';
 
 @Component({
   providers: [ArticulosService],
-  standalone:false,
+  standalone: false,
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-meses:any=[];
+  meses: any = [];
 
-clients:any=[];
+  clients: any = [];
 
-  constructor(private artServ: ArticulosService) { }
+  constructor(
+    private artServ: ArticulosService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
-   
-     this.recuperarClientes();
-   
+
+    this.recuperarClientes();
+
   }
   recuperarClientes(): void {
-  //  alert("pre");
-    this.artServ.recuperarClientes().subscribe((p99): void => {this.clients = (p99)
-    //  this.artServ.recuperarClientes().subscribe(p99 => {alert(JSON.stringify(p99));
-  })
-  //alert (JSON.stringify(this.clients));
-  //alert("ost");
-    }
-    
+    this.artServ.recuperarClientes().subscribe({
+      next: (p99) => {
+        console.log('Clientes recibidos:', p99);
+
+        this.clients = p99;
+
+        this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error recuperando clientes:', error);
+      }
+    });
+  }
 }

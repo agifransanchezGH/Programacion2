@@ -1,0 +1,145 @@
+:host {
+  display: block;
+}
+
+h2 {
+  margin: 0 0 0.4rem;
+  color: #172b3a;
+  font-size: 1.5rem;
+}
+
+.record-count {
+  margin: 0 0 1rem;
+  color: #64717e;
+  font-size: 0.9rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.85rem;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid #e1e6ea;
+  border-radius: 0.4rem;
+  background: #fff;
+}
+
+.filters label,
+.page-jump label {
+  display: grid;
+  gap: 0.35rem;
+  color: #536271;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.filters select,
+.filters input,
+.page-jump input {
+  min-height: 2.4rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d5dde3;
+  border-radius: 0.3rem;
+  background: #fff;
+  color: #263d4e;
+  font: inherit;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-actions button,
+.pagination button,
+.page-jump button {
+  min-height: 2.4rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #d5dde3;
+  border-radius: 0.35rem;
+  background: #263d4e;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-actions .secondary-button {
+  background: #fff;
+  color: #263d4e;
+}
+
+.status-message {
+  padding: 1rem;
+  color: #435363;
+}
+
+.error-message {
+  border: 1px solid #e6c6c6;
+  border-radius: 0.35rem;
+  background: #fff7f7;
+  color: #8c3030;
+}
+
+.empty-message {
+  color: #64717e;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: #536271;
+  font-size: 0.9rem;
+}
+
+.page-jump {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.page-jump label {
+  display: inline;
+}
+
+.page-jump input {
+  width: 4.5rem;
+}
+
+.pagination > button {
+  background: #fff;
+  color: #263d4e;
+}
+
+.filter-actions button:hover:not(:disabled),
+.pagination button:hover:not(:disabled),
+.page-jump button:hover:not(:disabled) {
+  border-color: #9eafbc;
+  background: #f8fafb;
+  color: #173c58;
+}
+
+.filter-actions button:disabled,
+.pagination button:disabled,
+.page-jump button:disabled {
+  color: #9aa5ae;
+  cursor: not-allowed;
+  background: #f2f4f6;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .filters > label {
+    flex: 1 1 8rem;
+  }
+}
