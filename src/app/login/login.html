@@ -1,0 +1,41 @@
+
+<div class="login-container">
+  <form class="login-card" (ngSubmit)="iniciarSesion()">
+    <h1>Iniciar sesión</h1>
+    <p class="subtitulo">Ingresa tus credenciales para continuar</p>
+
+    <div class="campo">
+      <label for="usuario">Usuario</label>
+      <input
+        id="usuario"
+        type="text"
+        name="usuario"
+        [(ngModel)]="usuario"
+        placeholder="Tu nombre de usuario"
+        autocomplete="username"
+        required
+      />
+    </div>
+
+    <div class="campo">
+      <label for="password">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Tu contraseña"
+        autocomplete="current-password"
+        required
+      />
+    </div>
+
+    <p class="mensaje" *ngIf="mensaje" role="alert">
+      {{ mensaje }}
+    </p>
+
+    <button type="submit" [disabled]="cargando">
+      {{ cargando ? 'Verificando...' : 'Ingresar' }}
+    </button>
+  </form>
+</div>
